@@ -51,8 +51,8 @@ A production-ready inventory management system built with **ASP.NET Core 8 Web A
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/inventory-management-system.git
-cd inventory-management-system
+git clone https://github.com/Karim3mr/inventorypro.git
+cd inventorypro
 ```
 
 ---
