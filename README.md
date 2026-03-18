@@ -19,6 +19,16 @@ A production-ready inventory management system built with **ASP.NET Core 8 Web A
 
 ---
 
+## 💡 Key Highlights
+
+- Role-based authentication system (Admin / Manager / Staff)
+- Real-time inventory tracking with stock updates
+- Automated low-stock and out-of-stock alert system
+- Full audit trail for all stock transactions
+- Interactive analytics dashboard with charts and reports
+
+---
+
 ## 🛠️ Tech Stack
 
 **Backend**
@@ -106,7 +116,7 @@ The app will be available at `http://localhost:5173`
 ## 📁 Project Structure
 
 ```
-inventory-management-system/
+InventoryPro/
 ├── backend/
 │   ├── Controllers/        # API endpoints
 │   ├── Data/               # EF Core DbContext & migrations
@@ -141,7 +151,40 @@ inventory-management-system/
 
 ## 📸 Screenshots
 
-> Dashboard · Products · Stock Transactions · Alerts · Reports
+### Dashboard Overview
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Dashboard Charts
+![Dashboard Charts](docs/screenshots/dashboard-charts.png)
+
+### Products Management
+![Products](docs/screenshots/products.png)
+
+### Reports - Top Products
+![Reports Top](docs/screenshots/reports-top-products.png)
+
+### Reports - Stock Movement
+![Reports Stock](docs/screenshots/reports-stock.png)
+
+### Stock Transactions
+![Stock](docs/screenshots/stock.png)
+
+### Alerts System
+![Alerts](docs/screenshots/alerts.png)
+
+---
+
+## 🧠 System Overview
+
+InventoryPro is designed to help businesses manage their inventory efficiently.
+
+It allows users to:
+- Track product quantities in real-time
+- Monitor stock movement (IN / OUT)
+- Receive alerts for low or out-of-stock items
+- Analyze inventory data through charts and reports
+
+The system supports multiple user roles with different permissions to ensure secure and organized operations.
 
 ---
 
