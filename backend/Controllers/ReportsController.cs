@@ -36,14 +36,15 @@ public class ReportsController : ControllerBase
     public async Task<IActionResult> StockMovement(
         [FromQuery] DateTime? from, [FromQuery] DateTime? to)
     {
-        var q = _db.StockTransactions
-            .Include(t => t.Product)
-            .AsQueryable();
+        var q = _db.StockTransactions.AsQueryable();
 
         if (from.HasValue) q = q.Where(t => t.CreatedAt >= from);
         if (to.HasValue) q = q.Where(t => t.CreatedAt <= to);
 
-        var report = await q
+        // Bring to memory first — EF Core can't translate GroupBy with navigation props
+        var raw = await q.Include(t => t.Product).ToListAsync();
+
+        var report = raw
             .GroupBy(t => new { t.ProductId, t.Product.Name, t.Product.SKU })
             .Select(g => new StockMovementReport(
                 g.Key.Name, g.Key.SKU,
@@ -51,7 +52,7 @@ public class ReportsController : ControllerBase
                 g.Where(t => t.TransactionType == "OUT").Sum(t => t.Quantity),
                 g.OrderByDescending(t => t.CreatedAt).First().QuantityAfter
             ))
-            .ToListAsync();
+            .ToList();
 
         return Ok(report);
     }
@@ -59,17 +60,22 @@ public class ReportsController : ControllerBase
     [HttpGet("top-products")]
     public async Task<IActionResult> TopProducts()
     {
-        var report = await _db.StockTransactions
+        // Fetch to memory first — EF Core can't translate complex GroupBy with navigation props
+        var transactions = await _db.StockTransactions
             .Include(t => t.Product)
+            .ToListAsync();
+
+        var report = transactions
             .GroupBy(t => new { t.ProductId, t.Product.Name, t.Product.SKU, t.Product.Price })
             .Select(g => new TopProductsReport(
-                g.Key.Name, g.Key.SKU,
+                g.Key.Name,
+                g.Key.SKU,
                 g.Sum(t => t.Quantity),
                 g.Sum(t => t.Quantity) * g.Key.Price
             ))
             .OrderByDescending(r => r.TotalMovement)
             .Take(10)
-            .ToListAsync();
+            .ToList();
 
         return Ok(report);
     }
