@@ -152,25 +152,25 @@ InventoryPro/
 ## 📸 Screenshots
 
 ### Dashboard Overview
-![Dashboard](docs/screenshots/dashboard.png)
+![Dashboard Overview](docs/screenshots/dashboard-overview.png)
 
-### Dashboard Charts
-![Dashboard Charts](docs/screenshots/dashboard-charts.png)
+### Dashboard Alerts
+![Dashboard Alerts](docs/screenshots/dashboard-alerts.png)
 
 ### Products Management
-![Products](docs/screenshots/products.png)
+![Products Management](docs/screenshots/products-management.png)
 
 ### Reports - Top Products
-![Reports Top](docs/screenshots/reports-top-products.png)
+![Reports Top Products](docs/screenshots/reports-top-products.png)
 
-### Reports - Stock Movement
-![Reports Stock](docs/screenshots/reports-stock.png)
+### Reports - Stock Summary
+![Reports Stock Summary](docs/screenshots/reports-stock-summary.png)
 
 ### Stock Transactions
-![Stock](docs/screenshots/stock.png)
+![Stock Transactions](docs/screenshots/stock-transactions.png)
 
 ### Alerts System
-![Alerts](docs/screenshots/alerts.png)
+![Alerts System](docs/screenshots/alerts-system.png)
 
 ---
 
